@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilePreviewOverlayService } from './file-preview-overlay.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { Component } from '@angular/core';
     <h2>Here are some links to help you start: </h2>
     <ul>
       <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+        <h2><a target="_blank" rel="noopener" (click)="showPreview()">Tour of Heroes</a></h2>
       </li>
       <li>
         <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
@@ -27,5 +28,13 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
+  constructor(private filePreviewOverlayService: FilePreviewOverlayService){
+
+  }
   title = 'app';
+
+  showPreview(){
+    console.log('here');
+    this.filePreviewOverlayService.open();
+  }
 }
